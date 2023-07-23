@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BPSG-454</title>
+  <style>
+    body {
+      text-align: justify;
+      margin: 0;
+    }
+
+    #container {
+      max-width: 800px;
+      margin: 100px auto 20px;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    #ribbon {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: lightgrey;
+      padding: 2px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1;
+    }
+
+    #search-bar-container {
+      position: fixed;
+      top: 35px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40%;
+      background-color: yellow;
+      padding: 5px;
+      font-size: 12px;
+    }
+
+    #navigation-buttons {
+      position: fixed;
+      top: 40px;
+      right: 5%;
+      background-color: #f1f1f1;
+      z-index: 1;
+    }
+
+    /* Style for the links */
+    #navigation-buttons button {
+      text-decoration: none;
+      margin: 5px;
+      font-size: small;
+      color:orangered;
+    }
+
+    .highlight {
+      background-color: yellow;
+    }
+
+    #developedby {
+      font-style: italic;
+      color: red;
+    }
+
+    .link-container {
+      position: fixed;
+      bottom: 90%;
+      left: 0;
+      right: 0;
+      text-align: bottom;
+    }
+
+    /* Style for the links */
+    .link-container a {
+      color: red;
+      text-decoration: none;
+      display: inline-block;
+      margin-right: 20px;
+      font-size: normal;
+    }
+
+    .bold-search {
+      font-weight: bold;
+
+    }
+  </style>
+</head>
+<body>
+  <!-- Ribbon with search bar and total results count -->
+  <div id="ribbon">
+    <b>BPSG 454-Public Service Management II</b>
+
+  </div>
+
+  <!-- Search bar and navigation buttons outside the ribbon -->
+  <div id="search-bar-container">
+    <input type="text" id="search-bar" placeholder="Enter your search query">
+    <span id="search-results-count"></span>
+
+    <div id="navigation-buttons">
+      <button id="previous-button" onclick="navigateToPreviousResult()">Previous</button>
+      <button id="next-button" onclick="navigateToNextResult()">Next</button>
+    </div>
+  </div>
+
+  <div id="container">
+
+    <p>Credit 3 </p>
+    <p>Contact Hours:  48</p>
+    <p><b>COURSE DESCRIPTION AND SCOPE</b></p>
+    
+    <p>This course is developed to produce undergraduate students having the knowledge and capability of exploring and thing critically on essential aspects of public services management. The course will enrich the students orient towards fostering and sustaining high quality results oriented and performing public service through systematic learning and hand-on experiences. The course overs the issues of innovations in public service management,  public private sector partnership nd people's participation in design and delivery of public service delivery. Additionally the course encompasses theory,  organization structure,  procedure and professional practices of several public services of Nepal such as Land Management,  Development Process Management. Election Management and Recruitment & Selection Process</p>
+    <p><b>COURSE OBJECTIVES</b></p>
+    <p>This course aims to make students familiar with conceptual and practical knowledge of public affairs management. Specifically,  following are focused objectives of the course:  </p>
+    <p>&#x2022;  Impart essential knowledge and evidence of innovations in public service delivery around the globe. </p>
+    <a id="MIDDLE"></a>
+    <p>&#x2022;  Enrich students' knowledge to understand theoretical knowledge of public service management and current status of public service delivery in Nepal.</p>
+    <p>&#x2022;  Enable students learn,  understand and investigate on co-design,  co-production and co- governance of public services.</p>
+        <p>&#x2022;  Make students understand and feel the standard office setting of Nepalese public service delivery organization</p>
+    <p>&#x2022;  Enrich students' knowledge to analyze institutional arrangements,  structures and procedures of Land Management,  Development Process Management,  Election Management,  Management of Recruitment and Selection Process</p>
+    
+    <p><b>COURSE DETAILS</b></p>
+    
+    <p><b>UNIT I:  Management of Public Affairs [CH 20]</b></p>
+    <p>Theory,  organization structure,  procedure and professional practices of the following public services in Nepal: Land Management; Development Process Management; Election Management, Management of Recruitment and Selection Process</p>
+    
+    <p><b>UNIT II:  Innovations in Public Services Management [CH 10]</b></p>
+    <p>Designing,  Piloting and Implementing Public Service Solutions; Examples of Innovative solutions by governments in the world (e.g. e-identity,  e-Residency. Smart-ID,  X-Road,  e-Land Register,  Population Registry,  KSI Blockchain,  e-Justice,  e-Police,  i-Voting,  Government Cloud,  Intelligent Transportation Systems and Data Embassy of Estonia:  Artificial Intelligence and Regulatory Sandbox of Singapore:  Dubai 10x Innovations,  Global Development Lab of the USA; Seoul 50+ policy of South Korea,  E-waste Recycling of China:  Patient Innovation Platform of Portugal etc.); Governance challenges for innovative service delivery.</p>
+    
+    <p><b>UNIT III:  Public and Private Sector Partnerships [CH 5]</b></p>
+    <p>Basic theories;  Types and Models; Outsourcing,  Competition,  Deregulation. Contracting etc. Insourcing:  Advantages,  disadvantages,  obstacles and implications for service delivery; Role of public service officials.</p>
+    
+    <p><b>UNIT IV:  Co-production and Co-Governance of public services.[CH 13]</b></p>
+    <p>Concept:  Emergence: Co-production,  Co-creation and Co-Governance:  International Practices,  Nepal's practices and prospects; Criticisms; Challenges.</p>
+    <p><b>REFERENCES</b></p>
+    <p>Anttiroiko,  A.-V.,  Bailey,  S.J.,  Valkama,  P. (2011). <i> Innovations in Public Governance- Volume 15 Innovation and the Public Sector, </i> IOS Press.</p>
+    <p>Brandsen,  Tec,  Steen,  Tui& Verschere,  Bram (eds),  (2018). <i>Co-production and co-creation:  engaging citizens in public services. </i>   New York,  Routledge.</p>
+    <p>Durose,  Catherine & Richardson,  Liz (2015),  <i>Designing Public Policy for Co-production.</i>  Chicago,  University of Chicago Press.</p>
+    <p>Jing,  Yijia & Osborne,  Stephen P. (eds) (2017). <i>Public Service Innovations in China,  Singapore,  Palgrave.</i></p>
+    <p>Link,  Albert N. (2006). <i> Public Private Partnerships:  Innovation Strategies and Policy Alternatives.</i>  Springer.</p>
+    <p>Laws,  rules,  regulations,  procedures and reports of the GON authorities relating to Land Management,  Development Management,  Election Management and Public Service Recruitment.</p>
+  </div>
+ 
+
+  <script>
+    var searchQuery = '';
+    var currentResultIndex = -1;
+    var searchResults = [];
+
+    function performSearch() {
+      searchQuery = document.getElementById('search-bar').value;
+      var contentElements = document.querySelectorAll("#container :not(script)");
+
+      // Clear previous highlighting and bold style
+      for (var i = 0; i < contentElements.length; i++) {
+        var element = contentElements[i];
+        element.innerHTML = element.textContent;
+        element.classList.remove("bold-search");
+      }
+
+      var countElement = document.getElementById('search-results-count');
+      var searchCount = 0;
+
+      // Perform search logic here...
+      // For this example, let's just highlight the search query
+      searchResults = [];
+      for (var i = 0; i < contentElements.length; i++) {
+        var element = contentElements[i];
+        var content = element.textContent;
+        var regex = new RegExp(searchQuery, 'gi');
+        var matches = content.match(regex);
+        if (matches) {
+          searchCount += matches.length;
+          var highlightedContent = content.replace(regex, '<span class="highlight">$&</span>');
+          element.innerHTML = highlightedContent;
+
+          // Save the search results for navigation
+          for (var j = 0; j < matches.length; j++) {
+            searchResults.push(element);
+          }
+        }
+      }
+
+      // Update the search results count
+      countElement.textContent = "Total Results: " + searchCount;
+      currentResultIndex = -1;
+    }
+
+    function navigateToNextResult() {
+      if (searchResults.length === 0) return;
+      if (currentResultIndex !== -1) {
+        searchResults[currentResultIndex].classList.remove("bold-search");
+      }
+      currentResultIndex = (currentResultIndex + 1) % searchResults.length;
+      updateNavigatedCount();
+      scrollToElement(searchResults[currentResultIndex]);
+      searchResults[currentResultIndex].classList.add("bold-search");
+    }
+
+    function navigateToPreviousResult() {
+      if (searchResults.length === 0) return;
+      if (currentResultIndex !== -1) {
+        searchResults[currentResultIndex].classList.remove("bold-search");
+      }
+      currentResultIndex = (currentResultIndex - 1 + searchResults.length) % searchResults.length;
+      updateNavigatedCount();
+      scrollToElement(searchResults[currentResultIndex]);
+      searchResults[currentResultIndex].classList.add("bold-search");
+    }
+
+    function updateNavigatedCount() {
+      var countElement = document.getElementById('search-results-count');
+      if (searchResults.length === 0) {
+        countElement.textContent = "Total Results: 0";
+      } else {
+        var navigated = currentResultIndex + 1;
+        countElement.textContent = "Navigated Result: " + navigated + " out of " + searchResults.length;
+      }
+    }
+
+    function scrollToElement(element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Attach event listener to the search bar
+    var searchBar = document.getElementById('search-bar');
+    searchBar.addEventListener('input', performSearch);
+  </script>
+
+  <a id="BOTTOM"></a>
+  <footer>
+    <div class="link-container">
+      <a href="#TOP">&#x25B2;</a>
+      <a href="#MIDDLE">X&#772;</a>
+      <a href="#BOTTOM">&#x25BC;</a>
+    </div>
+    <p id="developedby"><u><b>Developed By:</b></u><br> Shiva Prasad Acharya (M.Sc.; LL.M)<br> Shiva.Acharya@supremecourt.gov.np <br>
+    </p>
+  </footer>
+</body>
+</html>
