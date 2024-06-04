@@ -1,72 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BPSG-454</title>
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
   <style>
+    /* Existing styles */
     body {
-      text-align: justify;
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      padding: 0;
       margin: 0;
+      background-color: #f2f2f2;
     }
 
-    #container {
-      max-width: 800px;
-      margin: 100px auto 20px;
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
       padding: 20px;
+      background-color: #fff;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     h1 {
-      text-align: center;
+      font-size: 24px;
+      margin-top: 0;
     }
 
-    #ribbon {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background-color: lightgrey;
-      padding: 2px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 1;
+    tr:hover {
+      background-color: #f5f5f5;
     }
 
-    #search-bar-container {
-      position: fixed;
-      top: 35px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 40%;
-      background-color: yellow;
-      padding: 5px;
-      font-size: 12px;
-    }
-
-    #navigation-buttons {
-      position: fixed;
-      top: 40px;
-      right: 5%;
-      background-color: #f1f1f1;
-      z-index: 1;
-    }
-
-    /* Style for the links */
-    #navigation-buttons button {
+    a {
       text-decoration: none;
-      margin: 5px;
-      font-size: small;
-      color:orangered;
+      color: #333;
     }
 
-    .highlight {
-      background-color: yellow;
+    .btn {
+      display: inline-block;
+      padding: 8px 16px;
+      background-color: blue;
+      color: #fff;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .btn1 {
+      display: inline-block;
+      padding: 8px 16px;
+      background-color: grey;
+      color: #fff;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .btn2 {
+      display: inline-block;
+      padding: 8px 16px;
+      background-color: indigo;
+      color: #fff;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .btn3 {
+      display: inline-block;
+      padding: 8px 16px;
+      text-align: right;
+      background-color: black;
+      color: #fff;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .btn:hover,
+    .btn1:hover,
+    .btn2:hover,
+    .btn3:hover {
+      background-color: green;
     }
 
     #developedby {
       font-style: italic;
-      color: red;
+      color: brown;
+      text-align: right;
+    }
+
+    #search::placeholder {
+      color: #999;
+    }
+
+    .fixedtop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #fff;
+      z-index: 9999;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      padding: 10px;
+      box-sizing: border-box;
+      display: flex;
+      align-content: center;
+
+    }
+
+    #contacts {
+      margin-top: 60px;
+      overflow-y: auto;
+      height: calc(100vh - 60px);
+      box-sizing: border-box;
+      padding: 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+
+    #search {
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      font-size: 18px;
+      margin-bottom: 10px;
+      text-align: left;
+      background-color: yellow;
+      margin-left: auto;
+    }
+
+    .comment-box-container {
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+    }
+
+    #comment {
+      width: 100%;
+      box-sizing: border-box;
+      padding-right: 40px;
+      /* Space for the arrow button */
+    }
+
+    .send-arrow {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      font-size: 24px;
+      color: #007BFF;
     }
 
     .link-container {
@@ -77,7 +169,6 @@
       text-align: bottom;
     }
 
-    /* Style for the links */
     .link-container a {
       color: red;
       text-decoration: none;
@@ -86,163 +177,585 @@
       font-size: normal;
     }
 
-    .bold-search {
-      font-weight: bold;
+    .timetable table {
+      width: 100%;
+      border-collapse: collapse;
+    }
 
+    .timetable th,
+    .timetable td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: left;
+    }
+
+    .timetable th {
+      background-color: #f2f2f2;
+    }
+
+    /* New styles for the dropdown */
+    .dropdown {
+      position: left;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      min-width: 160px;
+    }
+
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .highlight {
+      background-color: yellow;
     }
   </style>
 </head>
+
 <body>
-  <!-- Ribbon with search bar and total results count -->
-  <div id="ribbon">
-    <b>BPSG 454-Public Service Management II</b>
+  <div class="fixedtop">
 
-  </div>
+    <div class="dropdown">
+      <button class="btn3">&#9776;</button>
+      <div class="dropdown-content">
+        <a href="#"
+          onclick="showSection('contacts-section')">Contact List</a>
+        <a href="#"
+          onclick="showSection('timetable-section')">Timetable</a>
+        <a href="#"
+          onclick="showSection('syllables-section')">Syllables</a>
+      </div>
+    </div>
 
-  <!-- Search bar and navigation buttons outside the ribbon -->
-  <div id="search-bar-container">
-    <input type="text" id="search-bar" placeholder="Enter your search query">
-    <span id="search-results-count"></span>
+    <p id="developedby"><u><b>BPSG IInd Batch-7th semester</b></u><br> -शिवप्रसादआचार्येण निर्मितानि</p>
 
-    <div id="navigation-buttons">
-      <button id="previous-button" onclick="navigateToPreviousResult()">Previous</button>
-      <button id="next-button" onclick="navigateToNextResult()">Next</button>
+    <div class="link-container">
+      <a href="#top">&#x25B2;</a>
+      <a href="#bottom">&#x25BC;</a>
+    </div>
+
+    <input type="text"
+      id="search"
+      onkeyup="searchFunction()"
+      placeholder="अन्वेषिका.....">
+  </div><br><br><br>
+  <!--fixed bar content-->
+  <div id="main-content">
+    <div id="contacts-section">
+      <div id="contacts">
+        <table>
+          <a id="top"></a><b>Contact List</b>
+          <thead>
+
+          <tbody>
+            <tr>
+              <td> Shri Kailash Upreti<br>कैलास उप्रेती<br>Ast. Coordinator</td>
+              <td><a href="tel:+9779841643157">9841643157<br><button class="btn2"
+                    onclick="call('+9779841643157')">Call</button></a></td>
+            </tr>
+            <tr>
+              <td>Prof. Ramesh Shrestha (RS)<br>प्रो. रमेश श्रेष्ठ<br>email@example.com</td>
+              <td><a href="tel:+9779851146425">9851146425<br><button class="btn2"
+                    onclick="call('+9779851146425')">Call</button></a></td>
+            </tr>
+            <tr>
+              <td>Asso. Prof. Dr. Gopi Krishna Pandey (GKP)<br>सह-प्राध्यापक डा. गोपी कृष्ण पाण्डे<br>email@example.com
+              </td>
+              <td><a href="tel:+9779846136136">9846136136<br><button class="btn2"
+                    onclick="call('+9779846136136')">Call</button></a></td>
+            </tr>
+            <tr>
+              <td>Mr. Yadav Koirala (YK)<br>श्री यादव कोइराला<br>email@example.com</td>
+              <td><a href="tel:+9779851243333">9851243333<br><button class="btn2"
+                    onclick="call('+9779851243333')">Call</button></a></td>
+            </tr>
+            <tr>
+              <td>Mr. Raju Malla (RM)<br>श्री राजु मल्ल<br>email@example.com</td>
+              <td><a href="tel:+9779851056705">9851056705<br><button class="btn2"
+                    onclick="call('+9779851056705')">Call</button></a></td>
+            </tr>
+            <tr>
+              <td>Ms. Radhika Shrestha (RS)<br>श्री राधिका श्रेष्ठ<br>email@example.com</td>
+              <td><a href="tel:+9779841736417">9841736417<br><button class="btn2"
+                    onclick="call('+9779841736417')">Call</button></a></td>
+            </tr>
+            <tr>
+              <td>Mr. Kamal Kant Joshi (KKJ)<br>श्री कमलकान्त जोशी<br>email@example.com</td>
+              <td><a href="tel:+9779841892403">9841892403<br><button class="btn2"
+                    onclick="call('+9779841892403')">Call</button></a></td>
+            </tr>
+            <tr>
+              <td>Mr. Santosh Chhetri (SC)<br>श्री सन्तोष क्षेत्री<br>email@example.com</td>
+              <td><a href="tel:+9779861116424">9861116424<br><button class="btn2"
+                    onclick="call('+9779861116424')">Call</button></a></td>
+            </tr>
+            <tr>
+              <td>Mr. Shiva Prasad Acharya (SPA)<br>श्री शिव प्रसाद आचार्य<br>spacharya43@gmail.com</td>
+              <td><a href="tel:+9779849667879">9849667879<br><button class="btn"
+                    onclick="call('+9779849667879')">Call</button></a></td>
+            </tr>
+            <tr>
+              <td>Mr. Gaurab Tandel (TD)<br>श्री गौरव टंडेल<br>email@example.com</td>
+              <td><a href="tel:+9779851199835">9851199835<br><button class="btn"
+                    onclick="call('+9779851199835')">Call</button></a></td>
+            </tr>
+            <tr>
+              <td>1. Aastha Limbu<br>आस्था लिम्बु<br>bhokhimaasha@gmail.com</td>
+              <td><a href="tel:+9779808797606">9808797606<br><button class="btn"
+                    onclick="call('+9779808797606')">Call</button></a></td>
+            </tr>
+            <tr>
+              <td>2. Asmita Bohara<br>अस्मिता बोहरा<br>ASMITAbohara221@gmail.com</td>
+              <td><a href="tel:+9779844517046">9844517046<br><button class="btn"
+                    onclick="call('+9779844517046')">Call</button></a></td>
+            </tr>
+            <tr>
+              <td>3. Kritika Gautam<br>कृतिका गौतम<br>kr2059.gautam@gmail.com</td>
+              <td><a href="tel:+9779840699573">9840699573<br><button class="btn"
+                    onclick="call('+9779840699573')">Call</button></a></td>
+            </tr>
+            <tr>
+              <td>4. Lekhani Niraula<br>लेखानी निरौला<br>lekhani.niroula@gmail.com</td>
+              <td><a href="tel:+977986944861">986944861<br><button class="btn"
+                    onclick="call('+977986944861')">Call</button></a></td>
+            </tr>
+            <tr>
+              <td>5. Nisha Chaudhary<br>निशा चौधरी<br>nc5815362@gmail.com</td>
+              <td><a href="tel:+9779813050227">9813050227<br><button class="btn"
+                    onclick="call('+9779813050227')">Call</button></a></td>
+            </tr>
+            <tr>
+              <td>6. Kanchan Tiwari<br>कञ्चन तिवारी<br>tiwarikanchan2003@gmail.com</td>
+              <td><a href="tel:+9779761834968">9761834968<br><button class="btn"
+                    onclick="call('+9779761834968')">Call</button></a></td>
+            </tr>
+            <tr>
+              <td>7. Prabidhi Kadel<br>प्रविधी कँडेल<br>Prabidhikandel12@gmail.com</td>
+              <td><a href="tel:+9779841884082">9841884082<br><button class="btn"
+                    onclick="call('+9779841884082')">Call</button></a></td>
+            </tr>
+            <tr>
+              <td>8. Bijaya K.C.<br>विजय के.सी.<br>zarakc2000@gmail.com</td>
+              <td><a href="tel:+9779847821506">9847821506<br><button class="btn"
+                    onclick="call('+9779847821506')">Call</button></a></td>
+            </tr>
+            <tr>
+              <td>9. Susan Pant<br>सुशान पन्त<br>susanpant94@gmail.com</td>
+              <td><a href="tel:+9779847268060">9847268060<br><button class="btn"
+                    onclick="call('+9779847268060')">Call</button></a></td>
+            </tr>
+            <tr>
+              <td>10. Kritika Shrestha<br>कृतिका श्रेष्ठ<br>shresthakritika91@gmail.com</td>
+              <td><a href="tel:+9779849035441">9849035441<br><button class="btn"
+                    onclick="call('+9779849035441')">Call</button></a></td>
+            </tr>
+            <tr>
+              <td>11. Kriti Dahal<br>कृति दाहाल<br>KritiDahal06@gmail.com</td>
+              <td><a href="tel:+9779803370463">9803370463<br><button class="btn"
+                    onclick="call('+9779803370463')">Call</button></a></td>
+            </tr>
+            <tr>
+              <td>12. Pratikshya Bhattarai<br>प्रतिक्षा भट्टराई<br>pratikshyabhattarai01@gmail.com</td>
+              <td><a href="tel:+9779862740255">9862740255<br><button class="btn"
+                    onclick="call('+9779862740255')">Call</button></a></td>
+            </tr>
+            <tr>
+              <td>13. Mandina Ranjit<br>मन्दिना रञ्जित<br>r.mandina08@gmail.com</td>
+              <td><a href="tel:+9779849360120">9849360120<br><button class="btn"
+                    onclick="call('+9779849360120')">Call</button></a></td>
+            </tr>
+            <tr>
+              <td>14. Sahanshila Khadka<br>सहनशीला खड्का<br>khadkasahanshila@gmail.com</td>
+              <td><a href="tel:+9779863942847">9863942847<br><button class="btn"
+                    onclick="call('+9779863942847')">Call</button></a></td>
+            </tr>
+            <tr>
+              <td>15. Anisha Tripathi<br>अनीशा त्रिपाठी<br>anisha.tripathi2058@gmail.com</td>
+              <td><a href="tel:+9779840187689">9840187689<br><button class="btn"
+                    onclick="call('+9779840187689')">Call</button></a></td>
+            </tr>
+            <tr>
+              <td>16. Saraswati Sharma<br>सरस्वती शर्मा<br>saraswatisharma984154@gmail.com</td>
+              <td><a href="tel:+9779803604566">9803604566<br><button class="btn"
+                    onclick="call('+9779803604566')">Call</button></a></td>
+            </tr>
+            <tr>
+              <td>17. Mamata Rosyara<br>ममता रोस्यारा<br>mamatarosyara@gmail.com</td>
+              <td><a href="tel:+9779818111448">9818111448<br><button class="btn"
+                    onclick="call('+9779818111448')">Call</button></a></td>
+            </tr>
+            <tr>
+              <td>18. Sangeeta Tudu Satar<br>संगीता टुडु सतर<br>satarsangita2@gmail.com</td>
+              <td><a href="tel:+9779823157797">9823157797<br><button class="btn"
+                    onclick="call('+9779823157797')">Call</button></a></td>
+            </tr>
+            <tr>
+              <td>19. Anu Singh<br>अनु सिंह<br>anu593.2020@gmail.com</td>
+              <td><a href="tel:+9779826763593">9826763593<br><button class="btn"
+                    onclick="call('+9779826763593')">Call</button></a></td>
+            </tr>
+            <tr>
+              <td>20. Ankita Singh<br>अंकिता सिंह<br>singh.ankita2077@gmail.com</td>
+              <td><a href="tel:+9779817693547">9817693547<br><button class="btn"
+                    onclick="call('+9779817693547')">Call</button></a></td>
+            </tr>
+            <tr>
+              <td>21. Nabina Budhathoki<br>नविना बुढाथोकी<br>nabina975@gmail.com</td>
+              <td><a href="tel:+9779840376772">9840376772<br><button class="btn"
+                    onclick="call('+9779840376772')">Call</button></a></td>
+            </tr>
+            <tr>
+              <td>22. Sanjita Maharjan<br>सञ्जिता महर्जन<br>maharjansanjita64@gmail.com</td>
+              <td><a href="tel:+9779803003132">9803003132<br><button class="btn"
+                    onclick="call('+9779803003132')">Call</button></a></td>
+            </tr>
+
+          </tbody>
+        </table>
+        <p>.........................</p>
+      </div>
+    </div>
+    <div id="timetable-section">
+      <div class="timetable">
+
+        <center>
+          <h1>Tribhuvan University</h1>
+          <h2>Padmakanya Multiple Campus</h2>
+          <h3>BPSG Program</h3>
+          <h4>7<sup>th</sup> Semester (2077/2020 Batch)</h4>
+          <h5>Class Schedule (Effective from 2080-01-17)</h5>
+        </center>
+        <table>
+          <tr>
+            <th>Day</th>
+            <th>6:00 - 7:00 am</th>
+            <th>7:00 - 8:00 am</th>
+            <th>8:00 - 9:00 am</th>
+            <th>9:00 - 10:00 am</th>
+
+          </tr>
+          <tr>
+            <td>Sunday</td>
+            <td>Issues in Public Service Management (456) SC</td>
+            <td>Nepalese Administrative Law (453) KKJ</td>
+            <td>Public Service Management II (454) SPA</td>
+            <td>International Relations (455) YK</td>
+          </tr>
+          <tr>
+            <td>Monday</td>
+            <td>Issues in Public Service Management (456) SC</td>
+            <td>Nepalese Administrative Law (453) KKJ</td>
+            <td>Public Service Management II (454) SPA</td>
+            <td>International Relations (455) YK</td>
+          </tr>
+          <tr>
+            <td>Tuesday</td>
+            <td>Issues in Public Service Management (456) GKP</td>
+            <td>Nepalese Administrative Law (453) KKJ</td>
+            <td>Public Service Management II (454) SPA</td>
+            <td>International Relations (455) YK</td>
+          </tr>
+          <tr>
+            <td>Wednesday</td>
+            <td>Management of Conflict and Post Conflict Peace Building (EL2) RS</td>
+            <td>National Security Management (EL1) GT</td>
+            <td>Issues in Public Service Management (456) GKP</td>
+            <td>Management of Conflict and Post Conflict Peace Building (EL2) RS</td>
+          </tr>
+          <tr>
+            <td>Thursday</td>
+            <td>Seminar Paper III (RM)</td>
+            <td>National Security Management (EL1) GT</td>
+            <td>Issues in Public Service Management (456) RS</td>
+            <td>Management of Conflict and Post Conflict Peace Building (EL2) RS</td>
+          </tr>
+          <tr>
+            <td>Friday</td>
+            <td>International Relations (455) YK</td>
+            <td>National Security Management (EL1) GT</td>
+            <td>Issues in Public Service Management (456) RS</td>
+            <td>Management of Conflict and Post Conflict Peace Building (EL2) RS</td>
+          </tr>
+        </table>
+        <h4>Teacher Names & Contact Information</h4>
+        <table>
+          <tr>
+            <th>Teacher Name</th>
+            <th>Contact No.</th>
+          </tr>
+          <tr>
+            <td>Prof. Ramesh Shrestha (RS) BPSG-EL2</td>
+            <td>9851146425</td>
+          </tr>
+          <tr>
+            <td>Asso. Prof. Dr. Gopi Krishna Pandey (GKP) BPSG-456</td>
+            <td>9846136136</td>
+          </tr>
+          <tr>
+            <td>Mr. Yadav Koirala (YK) BPSG-455</td>
+            <td>9851243333</td>
+          </tr>
+          <tr>
+            <td>Mr. Raju Malla (RM) BPSG-457</td>
+            <td>9851056705</td>
+          </tr>
+          <tr>
+            <td>Ms. Radhika Shrestha (RS) BPSG-456</td>
+            <td>9841736417</td>
+          </tr>
+          <tr>
+            <td>Mr. Kamal Kant Joshi (KKJ) BPSG-453</td>
+            <td>9841892403</td>
+          </tr>
+          <tr>
+            <td>Mr. Santosh Chhetri (SC) BPSG-456</td>
+            <td>9861116424</td>
+          </tr>
+          <tr>
+            <td>Mr. Shiva Prasad Acharya (SPA) BPSG-454</td>
+            <td>9849667879</td>
+          </tr>
+          <tr>
+            <td>Mr. Gaurab Tandel (TD) BPSG-EL1</td>
+            <td>9851199835</td>
+          </tr>
+
+        </table>
+      </div>
+
+      <p>...............</p>
+    </div>
+
+    <div id="syllables-section">
+      <div id="syllables">
+        <table>
+          <b>Syllables of Public Service Management II</b>
+          <tr>
+            <td>Credit 3 </td>
+          </tr>
+          <tr>
+            <td>Contact Hours: 48</td>
+          </tr>
+          <tr>
+            <td><b>COURSE DESCRIPTION AND SCOPE</b></td>
+          </tr>
+
+          <tr>
+            <td>This course is developed to produce undergraduate students having the knowledge and capability of
+              exploring and thing critically on essential aspects of public services management. The course will enrich
+              the students orient towards fostering and sustaining high quality results oriented and performing public
+              service through systematic learning and hand-on experiences. The course overs the issues of innovations in
+              public service management, public private sector partnership nd people's participation in design and
+              delivery of public service delivery. Additionally the course encompasses theory, organization structure,
+              procedure and professional practices of several public services of Nepal such as Land Management,
+              Development Process Management. Election Management and Recruitment & Selection Process</td>
+          </tr>
+          <tr>
+            <td><b>COURSE OBJECTIVES</b></td>
+          </tr>
+          <tr>
+            <td>This course aims to make students familiar with conceptual and practical knowledge of public affairs
+              management. Specifically, following are focused objectives of the course: </td>
+          </tr>
+          <tr>
+            <td>&#x2022; Impart essential knowledge and evidence of innovations in public service delivery around the
+              globe. </td>
+          </tr>
+          <tr>
+            <td>&#x2022; Enrich students' knowledge to understand theoretical knowledge of public service management and
+              current status of public service delivery in Nepal.</td>
+          </tr>
+          <tr>
+            <td>&#x2022; Enable students learn, understand and investigate on co-design, co-production and co-
+              governance of public services.</td>
+          </tr>
+          <tr>
+            <td>&#x2022; Make students understand and feel the standard office setting of Nepalese public service
+              delivery organization</td>
+          </tr>
+          <tr>
+            <td>&#x2022; Enrich students' knowledge to analyze institutional arrangements, structures and procedures of
+              Land Management, Development Process Management, Election Management, Management of Recruitment and
+              Selection Process</td>
+          </tr>
+
+          <tr>
+            <td><b>COURSE DETAILS</b></td>
+          </tr>
+
+          <tr>
+            <td><b>UNIT I: Management of Public Affairs [CH 20]</b></td>
+          </tr>
+          <tr>
+            <td>Theory, organization structure, procedure and professional practices of the following public services in
+              Nepal: Land Management; Development Process Management; Election Management, Management of Recruitment and
+              Selection Process</td>
+          </tr>
+
+          <tr>
+            <td><b>UNIT II: Innovations in Public Services Management [CH 10]</b></td>
+          </tr>
+          <tr>
+            <td>Designing, Piloting and Implementing Public Service Solutions; Examples of Innovative solutions by
+              governments in the world (e.g. e-identity, e-Residency. Smart-ID, X-Road, e-Land Register, Population
+              Registry, KSI Blockchain, e-Justice, e-Police, i-Voting, Government Cloud, Intelligent Transportation
+              Systems and Data Embassy of Estonia: Artificial Intelligence and Regulatory Sandbox of Singapore: Dubai
+              10x Innovations, Global Development Lab of the USA; Seoul 50+ policy of South Korea, E-waste Recycling of
+              China: Patient Innovation Platform of Portugal etc.); Governance challenges for innovative service
+              delivery.</td>
+          </tr>
+
+          <tr>
+            <td><b>UNIT III: Public and Private Sector Partnerships [CH 5]</b></td>
+          </tr>
+          <tr>
+            <td>Basic theories; Types and Models; Outsourcing, Competition, Deregulation. Contracting etc. Insourcing:
+              Advantages, disadvantages, obstacles and implications for service delivery; Role of public service
+              officials.</td>
+          </tr>
+
+          <tr>
+            <td><b>UNIT IV: Co-production and Co-Governance of public services.[CH 13]</b></td>
+          </tr>
+          <tr>
+            <td>Concept: Emergence: Co-production, Co-creation and Co-Governance: International Practices, Nepal's
+              practices and prospects; Criticisms; Challenges.</td>
+          </tr>
+          <tr>
+            <td><b>REFERENCES</b></td>
+          </tr>
+          <tr>
+            <td>Anttiroiko, A.-V., Bailey, S.J., Valkama, P. (2011). <i> Innovations in Public Governance- Volume 15
+                Innovation and the Public Sector, </i> IOS Press.</td>
+          </tr>
+          <tr>
+            <td>Brandsen, Tec, Steen, Tui& Verschere, Bram (eds), (2018). <i>Co-production and co-creation: engaging
+                citizens in public services. </i> New York, Routledge.</td>
+          </tr>
+          <tr>
+            <td>Durose, Catherine & Richardson, Liz (2015), <i>Designing Public Policy for Co-production.</i> Chicago,
+              University of Chicago Press.</td>
+          </tr>
+          <tr>
+            <td>Jing, Yijia & Osborne, Stephen P. (eds) (2017). <i>Public Service Innovations in China, Singapore,
+                Palgrave.</i></td>
+          </tr>
+          <tr>
+            <td>Link, Albert N. (2006). <i> Public Private Partnerships: Innovation Strategies and Policy
+                Alternatives.</i> Springer.</td>
+          </tr>
+          <tr>
+            <td>Laws, rules, regulations, procedures and reports of the GON authorities relating to Land Management,
+              Development Management, Election Management and Public Service Recruitment.</td>
+          </tr>
+
+        </table>
+      </div>
+    </div>
+    <p><i>** Special thanks to Sahanshila Khadka (CR) for paramount support.<i></p>
+    <a id="bottom"></a>
+    <h3 id="feedback">Feedbacks/ Comments</h3>
+    <div class="comment-box-container">
+      <textarea id="comment"
+        name="comment"
+        rows="4"
+        cols="50"
+        required
+        placeholder="Your Comments are Only visible to app developer..."></textarea>
+      <span class="send-arrow"
+        onclick="sendEmail()">&#10148;</span>
     </div>
   </div>
-
-  <div id="container">
-
-    <p>Credit 3 </p>
-    <p>Contact Hours:  48</p>
-    <p><b>COURSE DESCRIPTION AND SCOPE</b></p>
-    
-    <p>This course is developed to produce undergraduate students having the knowledge and capability of exploring and thing critically on essential aspects of public services management. The course will enrich the students orient towards fostering and sustaining high quality results oriented and performing public service through systematic learning and hand-on experiences. The course overs the issues of innovations in public service management,  public private sector partnership nd people's participation in design and delivery of public service delivery. Additionally the course encompasses theory,  organization structure,  procedure and professional practices of several public services of Nepal such as Land Management,  Development Process Management. Election Management and Recruitment & Selection Process</p>
-    <p><b>COURSE OBJECTIVES</b></p>
-    <p>This course aims to make students familiar with conceptual and practical knowledge of public affairs management. Specifically,  following are focused objectives of the course:  </p>
-    <p>&#x2022;  Impart essential knowledge and evidence of innovations in public service delivery around the globe. </p>
-    <a id="MIDDLE"></a>
-    <p>&#x2022;  Enrich students' knowledge to understand theoretical knowledge of public service management and current status of public service delivery in Nepal.</p>
-    <p>&#x2022;  Enable students learn,  understand and investigate on co-design,  co-production and co- governance of public services.</p>
-        <p>&#x2022;  Make students understand and feel the standard office setting of Nepalese public service delivery organization</p>
-    <p>&#x2022;  Enrich students' knowledge to analyze institutional arrangements,  structures and procedures of Land Management,  Development Process Management,  Election Management,  Management of Recruitment and Selection Process</p>
-    
-    <p><b>COURSE DETAILS</b></p>
-    
-    <p><b>UNIT I:  Management of Public Affairs [CH 20]</b></p>
-    <p>Theory,  organization structure,  procedure and professional practices of the following public services in Nepal: Land Management; Development Process Management; Election Management, Management of Recruitment and Selection Process</p>
-    
-    <p><b>UNIT II:  Innovations in Public Services Management [CH 10]</b></p>
-    <p>Designing,  Piloting and Implementing Public Service Solutions; Examples of Innovative solutions by governments in the world (e.g. e-identity,  e-Residency. Smart-ID,  X-Road,  e-Land Register,  Population Registry,  KSI Blockchain,  e-Justice,  e-Police,  i-Voting,  Government Cloud,  Intelligent Transportation Systems and Data Embassy of Estonia:  Artificial Intelligence and Regulatory Sandbox of Singapore:  Dubai 10x Innovations,  Global Development Lab of the USA; Seoul 50+ policy of South Korea,  E-waste Recycling of China:  Patient Innovation Platform of Portugal etc.); Governance challenges for innovative service delivery.</p>
-    
-    <p><b>UNIT III:  Public and Private Sector Partnerships [CH 5]</b></p>
-    <p>Basic theories;  Types and Models; Outsourcing,  Competition,  Deregulation. Contracting etc. Insourcing:  Advantages,  disadvantages,  obstacles and implications for service delivery; Role of public service officials.</p>
-    
-    <p><b>UNIT IV:  Co-production and Co-Governance of public services.[CH 13]</b></p>
-    <p>Concept:  Emergence: Co-production,  Co-creation and Co-Governance:  International Practices,  Nepal's practices and prospects; Criticisms; Challenges.</p>
-    <p><b>REFERENCES</b></p>
-    <p>Anttiroiko,  A.-V.,  Bailey,  S.J.,  Valkama,  P. (2011). <i> Innovations in Public Governance- Volume 15 Innovation and the Public Sector, </i> IOS Press.</p>
-    <p>Brandsen,  Tec,  Steen,  Tui& Verschere,  Bram (eds),  (2018). <i>Co-production and co-creation:  engaging citizens in public services. </i>   New York,  Routledge.</p>
-    <p>Durose,  Catherine & Richardson,  Liz (2015),  <i>Designing Public Policy for Co-production.</i>  Chicago,  University of Chicago Press.</p>
-    <p>Jing,  Yijia & Osborne,  Stephen P. (eds) (2017). <i>Public Service Innovations in China,  Singapore,  Palgrave.</i></p>
-    <p>Link,  Albert N. (2006). <i> Public Private Partnerships:  Innovation Strategies and Policy Alternatives.</i>  Springer.</p>
-    <p>Laws,  rules,  regulations,  procedures and reports of the GON authorities relating to Land Management,  Development Management,  Election Management and Public Service Recruitment.</p>
-  </div>
- 
-
   <script>
-    var searchQuery = '';
-    var currentResultIndex = -1;
-    var searchResults = [];
+    function searchFunction() {
+      var input, filter, mainContent, tables, table, tr, td, i, j, txtValue;
+      input = document.getElementById("search");
+      filter = input.value.toUpperCase();
+      mainContent = document.getElementById("main-content");
+      tables = mainContent.getElementsByTagName("table");
 
-    function performSearch() {
-      searchQuery = document.getElementById('search-bar').value;
-      var contentElements = document.querySelectorAll("#container :not(script)");
-
-      // Clear previous highlighting and bold style
-      for (var i = 0; i < contentElements.length; i++) {
-        var element = contentElements[i];
-        element.innerHTML = element.textContent;
-        element.classList.remove("bold-search");
-      }
-
-      var countElement = document.getElementById('search-results-count');
-      var searchCount = 0;
-
-      // Perform search logic here...
-      // For this example, let's just highlight the search query
-      searchResults = [];
-      for (var i = 0; i < contentElements.length; i++) {
-        var element = contentElements[i];
-        var content = element.textContent;
-        var regex = new RegExp(searchQuery, 'gi');
-        var matches = content.match(regex);
-        if (matches) {
-          searchCount += matches.length;
-          var highlightedContent = content.replace(regex, '<span class="highlight">$&</span>');
-          element.innerHTML = highlightedContent;
-
-          // Save the search results for navigation
-          for (var j = 0; j < matches.length; j++) {
-            searchResults.push(element);
+      for (i = 0; i < tables.length; i++) {
+        table = tables[i];
+        tr = table.getElementsByTagName("tr");
+        for (j = 0; j < tr.length; j++) {
+          tr[j].style.display = "none"; // Hide all rows initially
+          tdArray = tr[j].getElementsByTagName("td");
+          for (k = 0; k < tdArray.length; k++) {
+            td = tdArray[k];
+            if (td) {
+              txtValue = td.textContent || td.innerText;
+              if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[j].style.display = ""; // Show row if a match is found
+                // Highlight the matched text
+                var regEx = new RegExp(filter, "ig");
+                td.innerHTML = txtValue.replace(regEx, function (matched) {
+                  return "<span class='highlight'>" + matched + "</span>";
+                });
+                break;
+              } else {
+                // Remove previous highlights if the row is not a match
+                td.innerHTML = td.innerText;
+              }
+            }
           }
         }
       }
-
-      // Update the search results count
-      countElement.textContent = "Total Results: " + searchCount;
-      currentResultIndex = -1;
     }
 
-    function navigateToNextResult() {
-      if (searchResults.length === 0) return;
-      if (currentResultIndex !== -1) {
-        searchResults[currentResultIndex].classList.remove("bold-search");
-      }
-      currentResultIndex = (currentResultIndex + 1) % searchResults.length;
-      updateNavigatedCount();
-      scrollToElement(searchResults[currentResultIndex]);
-      searchResults[currentResultIndex].classList.add("bold-search");
-    }
 
-    function navigateToPreviousResult() {
-      if (searchResults.length === 0) return;
-      if (currentResultIndex !== -1) {
-        searchResults[currentResultIndex].classList.remove("bold-search");
-      }
-      currentResultIndex = (currentResultIndex - 1 + searchResults.length) % searchResults.length;
-      updateNavigatedCount();
-      scrollToElement(searchResults[currentResultIndex]);
-      searchResults[currentResultIndex].classList.add("bold-search");
-    }
 
-    function updateNavigatedCount() {
-      var countElement = document.getElementById('search-results-count');
-      if (searchResults.length === 0) {
-        countElement.textContent = "Total Results: 0";
+    window.addEventListener("scroll", function () {
+      var fixedTop = document.querySelector(".fixedtop");
+      var contacts = document.querySelector("#contacts");
+      if (window.pageYOffset >= fixedTop.offsetHeight) {
+        contacts.style.marginTop = fixedTop.offsetHeight + "px";
       } else {
-        var navigated = currentResultIndex + 1;
-        countElement.textContent = "Navigated Result: " + navigated + " out of " + searchResults.length;
+        contacts.style.marginTop = "20px";
       }
+    });
+
+
+    function sendEmail() {
+      var comment = document.getElementById('comment').value;
+      var subject = encodeURIComponent('New Comment');
+      var body = encodeURIComponent('Comment:\n' + comment);
+      window.location.href = 'mailto:spacharya43@gmail.com?subject=' + subject + '&body=' + body;
     }
 
-    function scrollToElement(element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    function showSection(sectionId) {
+      var sections = document.querySelectorAll('#main-content > div');
+      sections.forEach(function (section) {
+        if (section.id === sectionId) {
+          section.style.display = 'block';
+        } else {
+          section.style.display = 'none';
+        }
+      });
     }
-
-    // Attach event listener to the search bar
-    var searchBar = document.getElementById('search-bar');
-    searchBar.addEventListener('input', performSearch);
   </script>
 
-  <a id="BOTTOM"></a>
-  <footer>
-    <div class="link-container">
-      <a href="#TOP">&#x25B2;</a>
-      <a href="#MIDDLE">X&#772;</a>
-      <a href="#BOTTOM">&#x25BC;</a>
-    </div>
-    <p id="developedby"><u><b>Developed By:</b></u><br> Shiva Prasad Acharya (M.Sc.; LL.M)<br> Shiva.Acharya@supremecourt.gov.np <br>
-    </p>
-  </footer>
 </body>
+<footer>
+  <center><b>-भवतु सब्ब मङ्गलम्-</b> </center>
+  <p id="developedby"><u><b>Developed By:</b></u><br> शिवप्रसाद आचार्य <br> २०८१, बुद्धपूर्णिमा <br></p>
+  <p>..................</p>
+</footer>
+
 </html>
